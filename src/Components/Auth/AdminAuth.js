@@ -2,9 +2,12 @@ import React from 'react'
 import AuthForm from './AuthForm'
 
 function AdminAuth() {
+  const getData=(data)=>{
+    console.log("Admin", data)
+  }
   return (
     <div>
-        <AuthForm />
+        <AuthForm onSubmit={getData}/>
     </div>
   )
 }

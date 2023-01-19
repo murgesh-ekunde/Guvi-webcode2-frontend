@@ -10,7 +10,7 @@ import { Box } from "@mui/system";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import React, { useState } from "react";
 
-function AuthForm() {
+function AuthForm({onSubmit, isAdmin}) {
   const [inputs, setInputs] = useState({
     name:"",
     email:"",
@@ -23,7 +23,9 @@ function AuthForm() {
 
   const handleSubmit = ((e)=>{
     e.preventDefault();
-    console.log(inputs)   //1:29
+    onSubmit({inputs, signup: isAdmin ? false: isSignUp})
+
+    //console.log(inputs)   //1:29
   })
   return (
     <div>
@@ -47,7 +49,9 @@ function AuthForm() {
             margin={"auto"}
             alignContent="center"
           >
-            {isSignUp && <> <FormLabel sx={{ mt: 1, mb: 1 }}>Name</FormLabel>
+            {!isAdmin && isSignUp &&
+            <> 
+            <FormLabel sx={{ mt: 1, mb: 1 }}>Name</FormLabel>
             <TextField
               value={inputs.name}
               onChange={handleChange}
@@ -84,14 +88,13 @@ function AuthForm() {
               {isSignUp ? "Sign Up":"Login"}
             </Button>
             
-            <Button
+           {!isAdmin && <Button
             onClick={()=>setisSignUp(!isSignUp)}
               sx={{ mt: 2, borderRadius: 10 }}
-              Switch
               fullWidth
             >
               {isSignUp ? "Login":"Sign Up"}
-            </Button>
+            </Button>}
 
 
           </Box>

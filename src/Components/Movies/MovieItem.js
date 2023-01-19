@@ -6,6 +6,7 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 
 function MovieItem({title, releaseDate, posterUrl, id}) {
   return (
@@ -30,7 +31,7 @@ function MovieItem({title, releaseDate, posterUrl, id}) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button sx={{ margin: "auto" }} size="small">
+        <Button LinkComponent={Link} to={`/booking/${id}`} sx={{ margin: "auto" }} size="small">
           Book
         </Button>
       </CardActions>
