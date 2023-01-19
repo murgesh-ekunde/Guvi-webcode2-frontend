@@ -61,7 +61,7 @@ function Header() {
               onChange={(e, val) => setValue(val)}
             >
               <Tab LinkComponent={Link} to="/movies" label="Movies" />
-              {!isAdminLoggedIn && isUserLoggedIn && (
+              {!isAdminLoggedIn && !isUserLoggedIn && (
               <>
               <Tab LinkComponent={Link} to="/auth"label="Auth" />
               <Tab LinkComponent={Link} to="/admin"label="Admin" />
